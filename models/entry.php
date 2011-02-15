@@ -7,8 +7,8 @@ class Entry extends AppModel {
         array('name' => 'email', 'type' => 'value', 'field' => 'User.email'),
 //        array('name' => 'location', 'type' => 'value', 'field' => 'Profile.location'), //動かなかったのでなし
         array('name' => 'pageview', 'type' => 'query', 'method' => 'pageviewBetween'),
-        array('name' => 'groupp_id', 'type' => 'subquery', 'field' => 'User.id', 'method' => 'searchByGroupps'),
-        array('name' => 'tag_id', 'type' => 'subquery', 'field' => 'Entry.id', 'method' => 'searchByTags'),
+        array('name' => 'groupp_id', 'type' => 'subquery', 'field' => 'User.id', 'method' => 'subqueryByGrouppsOr'),
+        array('name' => 'tag_id', 'type' => 'subquery', 'field' => 'Entry.id', 'method' => 'subqueryByTagsOr'),
         array('name' => 'tag_id_and', 'type' => 'subquery', 'field' => 'Entry.id', 'method' => 'subqueryByTagsAnd'),
         array('name' => 'word', 'type' => 'query', 'method' => 'findWithLike'),
     );
@@ -81,7 +81,7 @@ class Entry extends AppModel {
         return $coditions;
     }
     
-    public function searchByGroupps($data = array()){
+    public function subqueryByGrouppsOr($data = array()){
         $this->User->GrouppsUser->Behaviors->attach('Containable', array('autoFields' => false));
         $this->User->GrouppsUser->Behaviors->attach('Search.Searchable');
         $query = $this->User->GrouppsUser->getQuery('all', array(
@@ -92,7 +92,7 @@ class Entry extends AppModel {
         return $query;
     }
     
-    public function searchByTags($data = array()){
+    public function subqueryByTagsOr($data = array()){
         $this->EntriesTag->Behaviors->attach('Containable', array('autoFields' => false));
         $this->EntriesTag->Behaviors->attach('Search.Searchable');
         $query = $this->EntriesTag->getQuery('all', array(
