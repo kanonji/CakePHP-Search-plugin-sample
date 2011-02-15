@@ -18,12 +18,12 @@
     <dt>Entry id</dt><dd><?php echo $entry['Entry']['id'];?></dd>
     <dt>Entry label</dt><dd><?php echo $entry['Entry']['label'];?></dd>
     <dt>Entry pageview</dt><dd><?php echo $entry['Entry']['pageview'];?></dd>
-    <dt>Tag</dt><dd><?php foreach($entry['Tag'] as $tag){echo $tag['label'];}?></dd>
+    <dt>Tag</dt><dd><?php foreach($entry['Tag'] as $tag){echo "{$tag['label']} ";}?></dd>
     <dt>User id</dt><dd><?php echo $entry['User']['id'];?></dd>
     <dt>User username</dt><dd><?php echo $entry['User']['username'];?></dd>
     <dt>User email</dt><dd><?php echo $entry['User']['email'];?></dd>
     <dt>Profile location</dt><dd><?php echo $entry['User']['Profile']['location'];?></dd>
-    <dt>Groupp</dt><dd><?php foreach($entry['User']['Groupp'] as $groupp){echo $groupp['label'];}?></dd>
+    <dt>Groupp</dt><dd><?php foreach($entry['User']['Groupp'] as $groupp){echo "{$groupp['label']} ";}?></dd>
   </dl>
   </div><!-- class="item" -->
   <hr />

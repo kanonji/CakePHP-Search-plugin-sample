@@ -62,11 +62,11 @@ class InitsController extends AppController {
         $this->loadModel('Entry');
         foreach($users as $key => $username){
             $this->Entry->data[] = array('Tag'=>array('id'=>$dbkeys[0]),'Entry'=>array('user_id'=>$key,'label'=>$tags[$dbkeys[0]].' of '.$username,'pageview'=>5,'is_running'=>true));
-            $this->Entry->data[] = array('Tag'=>array('id'=>$dbkeys[0]),'Entry'=>array('user_id'=>$key,'label'=>$tags[$dbkeys[0]].'2nd of '.$username,'pageview'=>10,'is_running'=>true));
+            $this->Entry->data[] = array('Tag'=>array('id'=>$dbkeys[0]),'Entry'=>array('user_id'=>$key,'label'=>$tags[$dbkeys[0]].' 2nd of '.$username,'pageview'=>10,'is_running'=>true));
             $this->Entry->data[] = array('Tag'=>array('id'=>$dbkeys[1]),'Entry'=>array('user_id'=>$key,'label'=>$tags[$dbkeys[1]].' of '.$username,'pageview'=>30,'is_running'=>true));
-            $this->Entry->data[] = array('Tag'=>array('id'=>$dbkeys[1]),'Entry'=>array('user_id'=>$key,'label'=>$tags[$dbkeys[1]].'2nd of '.$username,'pageview'=>50,'is_running'=>true));
+            $this->Entry->data[] = array('Tag'=>array('id'=>$dbkeys[1]),'Entry'=>array('user_id'=>$key,'label'=>$tags[$dbkeys[1]].' 2nd of '.$username,'pageview'=>50,'is_running'=>true));
             $this->Entry->data[] = array('Tag'=>array('id'=>$dbkeys[2]),'Entry'=>array('user_id'=>$key,'label'=>$tags[$dbkeys[2]].' of '.$username,'pageview'=>75,'is_running'=>true));
-            $this->Entry->data[] = array('Tag'=>array('id'=>$dbkeys[2]),'Entry'=>array('user_id'=>$key,'label'=>$tags[$dbkeys[2]].'2nd of '.$username,'pageview'=>120,'is_running'=>true));
+            $this->Entry->data[] = array('Tag'=>array('id'=>$dbkeys[2]),'Entry'=>array('user_id'=>$key,'label'=>$tags[$dbkeys[2]].' 2nd of '.$username,'pageview'=>120,'is_running'=>true));
             $this->Entry->data[] = array('Tag'=>array('id'=>$dbkeys[2]),'Entry'=>array('user_id'=>$key,'label'=>'Draft of '.$username,'pageview'=>0,'is_running'=>false));
             $this->Entry->data[] = array('Tag'=>array($dbkeys[0],$dbkeys[1]),'Entry'=>array('user_id'=>$key,'label'=>$tags[$dbkeys[0]].' and '.$tags[$dbkeys[1]].' of '.$username,'pageview'=>5,'is_running'=>true));
             $this->Entry->data[] = array('Tag'=>array($dbkeys[1],$dbkeys[2]),'Entry'=>array('user_id'=>$key,'label'=>$tags[$dbkeys[1]].' and '.$tags[$dbkeys[2]].' of '.$username,'pageview'=>30,'is_running'=>true));
