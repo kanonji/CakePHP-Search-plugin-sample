@@ -39,8 +39,9 @@
 		echo $form->input('label',array('label'=>'Entry.label'));
 		echo $form->input('email',array('label'=>'User.email'));
 		echo $form->input('pageview',array('multiple'=>'checkbox','options'=>$pageviews,'label'=>'Entry.pageview'));
-		echo $form->input('groupp_id',array('multiple'=>'checkbox','options'=>$groups,'label'=>'Groupp HABTM User'));
-		echo $form->input('tag_id',array('multiple'=>'checkbox','options'=>$tags,'label'=>'Tag HABTM Entry'));
+		echo $form->input('groupp_id',array('multiple'=>'checkbox','options'=>$groups,'label'=>'Groupp HABTM User (OR)'));
+		echo $form->input('tag_id',array('multiple'=>'checkbox','options'=>$tags,'label'=>'Tag HABTM Entry (OR)'));
+		echo $form->input('tag_id_and',array('multiple'=>'checkbox','options'=>$tags,'label'=>'Tag HABTM Entry (AND)'));
 		echo $form->input('word');
 	?>
 	</fieldset>

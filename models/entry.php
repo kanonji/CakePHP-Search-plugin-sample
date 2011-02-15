@@ -9,6 +9,7 @@ class Entry extends AppModel {
         array('name' => 'pageview', 'type' => 'query', 'method' => 'pageviewBetween'),
         array('name' => 'groupp_id', 'type' => 'subquery', 'field' => 'User.id', 'method' => 'searchByGroupps'),
         array('name' => 'tag_id', 'type' => 'subquery', 'field' => 'Entry.id', 'method' => 'searchByTags'),
+        array('name' => 'tag_id_and', 'type' => 'subquery', 'field' => 'Entry.id', 'method' => 'subqueryByTagsAnd'),
         array('name' => 'word', 'type' => 'query', 'method' => 'findWithLike'),
     );
     var $validate = array(
@@ -100,6 +101,23 @@ class Entry extends AppModel {
             'contain' => $this->Tag->alias,
         ));
         return $query;
+    }
+    
+    public function subqueryByTagsAnd($data = array()){
+        $this->EntriesTag->Behaviors->attach('Containable', array('autoFields' => false));
+        $this->EntriesTag->Behaviors->attach('Search.Searchable');
+        $tag_id = explode('|', $data['tag_id_and']);
+        $options = array(
+            'conditions' => array('tag_id'  => $tag_id),
+            'fields' => array('entry_id'),
+            'contain' => $this->Tag->alias,
+        );
+        if (( $c = count ( $tag_id )) !== 1 )
+            $options['group'] = 'EntriesTag.entry_id HAVING COUNT(EntriesTag.entry_id) = '.$c;
+        $condition = implode(', ', $this->EntriesTag->find('list', $options));
+        if ( empty( $condition ))
+            $condition = 'NULL';
+        return $condition;
     }
     
     public function findWithLike($data = array()){

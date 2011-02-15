@@ -10,6 +10,7 @@ class SearchsController extends AppController {
         array('field' => 'pageview', 'type' => 'checkbox'),
         array('field' => 'groupp_id', 'type' => 'checkbox'),
         array('field' => 'tag_id', 'type' => 'checkbox'),
+        array('field' => 'tag_id_and', 'type' => 'checkbox'),
         array('field' => 'word', 'type' => 'value'),
     );
     
