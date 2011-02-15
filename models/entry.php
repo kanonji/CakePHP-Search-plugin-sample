@@ -81,19 +81,23 @@ class Entry extends AppModel {
     }
     
     public function searchByGroupps($data = array()){
+        $this->User->GrouppsUser->Behaviors->attach('Containable', array('autoFields' => false));
         $this->User->GrouppsUser->Behaviors->attach('Search.Searchable');
         $query = $this->User->GrouppsUser->getQuery('all', array(
             'conditions' => array('groupp_id'  => explode('|', $data['groupp_id'])),
             'fields' => array('user_id'),
+            'contain' => $this->User->Groupp->alias,
         ));
         return $query;
     }
     
     public function searchByTags($data = array()){
+        $this->EntriesTag->Behaviors->attach('Containable', array('autoFields' => false));
         $this->EntriesTag->Behaviors->attach('Search.Searchable');
         $query = $this->EntriesTag->getQuery('all', array(
             'conditions' => array('tag_id'  => explode('|', $data['tag_id'])),
             'fields' => array('entry_id'),
+            'contain' => $this->Tag->alias,
         ));
         return $query;
     }
