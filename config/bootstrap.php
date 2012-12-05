@@ -106,3 +106,5 @@ CakeLog::config('error', array(
 	'scopes' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+CakePlugin::load('TwitterBootstrap');
