@@ -1,0 +1,9 @@
+tmp/*/*
+!tmp/*/empty
+!tmp/cache/models/
+!tmp/cache/persistent/
+!tmp/cache/views/
+tmp/cache/*/*
+!tmp/cache/*/empty
+webroot/files/**/*
+Config/database.php
